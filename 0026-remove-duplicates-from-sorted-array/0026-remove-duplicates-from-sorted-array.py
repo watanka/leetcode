@@ -6,13 +6,10 @@ class Solution:
         pos = 0
         total_length = len(nums)
 
-        while idx < total_length :
-            if std != nums[idx] :
-                std = nums[idx]
-                nums[pos] = std
+        for idx in range(len(nums)) :
+            if nums[pos] != nums[idx] :
                 pos += 1
-
-            idx += 1
-
-        return pos
+                nums[pos] = nums[idx]
+            
+        return pos + 1
 
