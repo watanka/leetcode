@@ -5,4 +5,6 @@ class Solution:
         """
         res = k % len(nums)
 
-        nums[:] = nums[-res:] + nums[:-res]
+        replicate = nums + nums
+
+        nums[:] = replicate[len(nums) - res : len(replicate) - res]
