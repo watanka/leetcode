@@ -3,8 +3,15 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
+        
+        replicates = nums + nums
+
         res = k % len(nums)
 
-        replicate = nums + nums
+        idx = 0
+        for i in range(len(nums) - res, len(nums) * 2 - res) :
+            nums[idx] = replicates[i]
+            idx += 1
 
-        nums[:] = replicate[len(nums) - res : len(replicate) - res]
+        
+            
