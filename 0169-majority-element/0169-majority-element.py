@@ -1,11 +1,14 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        cnt = {}
+        result = 0
+        count = 0
 
         for n in nums :
-            if n not in cnt.keys() :
-                cnt[n] = 1
+            if count == 0 :
+                result = n
+            if n == result :
+                count += 1
             else :
-                cnt[n] += 1
+                count -= 1
 
-        return sorted(cnt.items(), key = lambda x : x[1], reverse = True)[0][0]
+        return result
