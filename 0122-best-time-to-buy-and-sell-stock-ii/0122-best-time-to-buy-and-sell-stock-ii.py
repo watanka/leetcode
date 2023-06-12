@@ -1,12 +1,12 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        x = prices[0]
-        profit = 0
-        for i in range(1, len(prices)) :
-            if x > prices[i] :
-                x = prices[i]
-            else :
-                profit += prices[i] - x
-                x = prices[i]
+        cur_hold, cur_not_hold = -float('inf'), 0
 
-        return profit
+        for stock_price in prices :
+
+            prev_hold, prev_not_hold = cur_hold, cur_not_hold
+
+            cur_hold = max(prev_hold, prev_not_hold - stock_price)
+            cur_not_hold = max(prev_not_hold, prev_hold + stock_price)
+
+        return cur_not_hold
