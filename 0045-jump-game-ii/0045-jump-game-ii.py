@@ -1,19 +1,32 @@
 class Solution:
     def jump(self, nums: List[int]) -> int:
+        idx = 0
+        result = 0
+        target = len(nums) - 1
 
-        if len(nums) <= 1 :
-            return 0
+        while idx < target :
+            if nums[idx] + idx >= target :
+                result += 1
+                break
+
+            greedy_idx, greedy_value = None, 0
+            for i in range(idx + 1, min(idx + nums[idx] + 1, target)) :
+                val = nums[i] + i
+
+                if val > greedy_value :
+                    greedy_value = val
+                    greedy_idx = i
+
+            idx = greedy_idx
+            result += 1
+
+        return result
+
+
+            
+
+
+            
+
+
         
-        n = len(nums)
-        dp = [0 for _ in range(len(nums))]
-        dp[0] = 1
-        # num_jump = 1
-        for i in range(n-1) :
-            if dp[i] :
-                for j in range(i+1, min(n, i + nums[i] + 1)) :
-                    if dp[j] :
-                        dp[j] = min(dp[j], dp[i] + 1)
-                    else :
-                        dp[j] = dp[i] + 1
-            # print(dp)
-        return dp[-1] - 1
