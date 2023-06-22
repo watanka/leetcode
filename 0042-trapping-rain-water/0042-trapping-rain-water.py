@@ -2,26 +2,19 @@ class Solution:
     def trap(self, height: List[int]) -> int:
         # max height of left block and max height of right block
 
-        maxheight_left_list = [0 for _ in range(len(height))]
-        maxheight_left = 0
-        for i in range(len(height)) :
-            maxheight_left = max(height[i], maxheight_left)
-            maxheight_left_list[i] = maxheight_left
+        upp, res = 0, 0
 
-        maxheight_right_list = [0 for _ in range(len(height))]
-        maxheight_right = 0
-        for i in range(len(height)-1, -1, -1) :
-            maxheight_right = max(height[i], maxheight_right)
-            maxheight_right_list[i] = maxheight_right
+        l = 0 
+        r = len(height) - 1
 
-        # print(maxheight_left_list)
-        # print(maxheight_right_list)
-        result = 0
-        for i in range(len(height)) :
-            result += max(0, min(maxheight_right_list[i], maxheight_left_list[i]) - height[i])      
+        while l < r :
+            low = min(height[l], height[r])
+            if height[l] < height[r] :
+                l += 1
+            else :
+                r -= 1
+            upp = max(upp, low)
+            res += (upp - low)
         
-        return result
+        return res
 
-        
-
-        
