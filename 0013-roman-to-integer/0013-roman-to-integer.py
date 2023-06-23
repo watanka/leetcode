@@ -10,23 +10,12 @@ class Solution:
             'D' : 500,
             'M' : 1000
         }
-
-        if len(s) == 1 :
-            return symbol_dict[s]
-
-        total = 0 
-        i = 0 
-        while i < len(s) :
-            num1, num2 = symbol_dict[s[i]], symbol_dict[s[i+1]]
-            if num1 < num2 :
-                total += (num2 - num1)
-                i += 2
+        total = 0
+        for i in range(len(s)) :
+            if i+1 < len(s) and symbol_dict[s[i]] < symbol_dict[s[i+1]] : # num_now and num_next is a combination num_now - num_next
+                total -= symbol_dict[s[i]]
             else :
-                total += num1
-                i += 1
-            if i == len(s)-1 :
                 total += symbol_dict[s[i]]
-                break
         
         return total
 
