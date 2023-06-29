@@ -6,9 +6,10 @@ class Solution:
 
         j = 0
         for i in range(len(t)) :
-            if t[i] == s[j] :
-                j += 1
-                if j == len(s) :
-                    return True
-        
+            if j < len(s) :
+                if t[i] == s[j] :
+                    j += 1
+            else :
+                break
+                
         return j == len(s)
