@@ -13,16 +13,10 @@ class Solution:
             permutation = words.copy()
             
             while s[start : start + length] in permutation and permutation : # while sliding window word is in permutation
-                try :
-                    permutation.remove(s[start : start + length])
-                except :
-                    print(s[start : start + length])
+                permutation.remove(s[start : start + length])
                 start += length
             if not permutation :
                 answer.append(left)
-
-            # print(permutation)
-
 
 
         return answer
