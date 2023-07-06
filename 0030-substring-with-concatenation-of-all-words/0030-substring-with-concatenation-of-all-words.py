@@ -1,28 +1,29 @@
-from itertools import permutations
-
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
+        count = {}
+        for w in words:
+            count[w] = count.get(w, 0) + 1
+        
+        lw = len(words[0])
+        fin = []
 
-        length = len(words[0])
-        num_words = len(words)
+        for i in range(lw):
+            l = i
+            window_hash = {}
 
-        answer = []
+            for r in range(i, len(s) - lw + 1, lw):
+                word = s[r:r + lw]
+                if word not in count:
+                    window_hash.clear()
+                    l = r + lw
+                else:
+                    window_hash[word] = window_hash.get(word, 0) + 1
 
-        for left in range(len(s) - length * num_words + 1) :
-            start = left
-            permutation = words.copy()
-            
-            while s[start : start + length] in permutation and permutation : # while sliding window word is in permutation
-                permutation.remove(s[start : start + length])
-                start += length
-            if not permutation :
-                answer.append(left)
+                    while window_hash[word] > count[word]:
+                        window_hash[s[l:l + lw]] -= 1
+                        l += lw
 
+                    if window_hash == count:
+                        fin.append(l)
 
-        return answer
-                
-
-            
-
-
-
+        return fin
