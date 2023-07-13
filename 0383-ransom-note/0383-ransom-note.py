@@ -13,6 +13,7 @@ class Solution:
                 if magazine_cnt[char] < 0 :
                     return False
 
+
             else :
                 return False
 
