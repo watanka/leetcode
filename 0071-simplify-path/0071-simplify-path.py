@@ -8,7 +8,7 @@ class Solution:
         '''
 
         splitted = path.replace('//', '/').split('/')[1:]
-        answer = []
+
         stack = []
         for name in splitted :
             
