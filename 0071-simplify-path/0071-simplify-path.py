@@ -13,9 +13,7 @@ class Solution:
         for name in splitted :
             
             if name == '..' : 
-                if not stack :
-                    stack = []
-                else :
+                if stack :
                     stack.pop()
             elif name != '' and name != '.' :
                 stack.append(name)
