@@ -1,29 +1,57 @@
 class MinStack:
-
     def __init__(self):
         self.stack = []
-        self.minValue = 2**31 - 1
+        self.minStack = []
 
     def push(self, val: int) -> None:
         self.stack.append(val)
-        if self.minValue > val :
-            self.minValue = val
-
-    def pop(self) -> None:
-
-        popVal = self.stack.pop(-1)
-        if self.minValue == popVal :
-            if self.stack :
-                self.minValue = min(self.stack)
+        if self.minStack :
+            if self.minStack[-1] > val :
+                self.minStack.append(val)
             else :
-                self.minValue = 2**31 - 1
+                minval = min(val, self.minStack[-1]) # record the minimum value at the time
+                self.minStack.append(minval)
+            
+        else :
+            self.minStack.append(val)
+        
+    def pop(self) -> None:
+        self.stack.pop()
+        self.minStack.pop()
         
 
     def top(self) -> int:
         return self.stack[-1]
 
     def getMin(self) -> int:
-        return self.minValue
+        return self.minStack[-1]
+
+
+    ## 2nd approach. use minValue
+    # def __init__(self):
+    #     self.stack = []
+    #     self.minValue = 2**31 - 1
+
+    # def push(self, val: int) -> None:
+    #     self.stack.append(val)
+    #     if self.minValue > val :
+    #         self.minValue = val
+
+    # def pop(self) -> None:
+
+    #     popVal = self.stack.pop(-1)
+    #     if self.minValue == popVal :
+    #         if self.stack :
+    #             self.minValue = min(self.stack)
+    #         else :
+    #             self.minValue = 2**31 - 1
+        
+
+    # def top(self) -> int:
+    #     return self.stack[-1]
+
+    # def getMin(self) -> int:
+    #     return self.minValue
 
 
     ## 1st approach. use list
