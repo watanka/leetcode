@@ -6,19 +6,28 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        
-        dic = {}
-        idx = 0
-        if not head : return False
-        
-        while True :
-            if not head.next :
-                return False
-            elif head not in dic.keys() :
-                dic[head] = 1
-            else :
+        fast = slow = head
+        while fast and fast.next :
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast :
                 return True
-
-            head = head.next
-
+                
         return False
+
+
+
+        ## 1st approach. hashmap
+        # dic = {}
+        # idx = 0
+        # if not head : return False
+
+        # while head.next :
+        #     if head not in dic.keys() :
+        #         dic[head] = 1
+        #     else :
+        #         return True
+
+        #     head = head.next
+
+        # return False
