@@ -21,13 +21,11 @@ class Solution:
             digit = sumval % 10
             carry = sumval // 10
 
-            newNode = ListNode(digit)
-            tail.next = newNode
+            tail.next = ListNode(digit)
             tail = tail.next
 
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
 
-        result = dummyHead.next
-        dummyHead.next = None
-        return result
+        tail.next = None
+        return dummyHead.next
