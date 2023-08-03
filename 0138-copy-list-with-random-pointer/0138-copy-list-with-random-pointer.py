@@ -29,30 +29,30 @@ class Solution:
         return hashmap[head]
 
 
-        answer = Node(x = 0)
-        tmp = head
-        tail = answer
+        # answer = Node(x = 0)
+        # tmp = head
+        # tail = answer
 
-        hashmap = dict()
-        while head :
-            tail.next = Node(x = head.val)
-            hashmap[tail] = head.random
-            tail = tail.next
+        # hashmap = dict()
+        # while head :
+        #     tail.next = Node(x = head.val)
+        #     hashmap[tail] = head.random
+        #     tail = tail.next
             
-            head = head.next
+        #     head = head.next
             
 
-        # answer = answer.next
-        tail = answer
-        tmp_tmp = tmp
-        while head :
-            if head.random :
-                tmp_tmp = tmp.next
-                for _ in range(head.random) :
-                    tmp_tmp = tmp_tmp.next
-                tail.random = tmp_tmp
+        # # answer = answer.next
+        # tail = answer
+        # tmp_tmp = tmp
+        # while head :
+        #     if head.random :
+        #         tmp_tmp = tmp.next
+        #         for _ in range(head.random) :
+        #             tmp_tmp = tmp_tmp.next
+        #         tail.random = tmp_tmp
             
-            tail = tail.next
-            head = head.next
+        #     tail = tail.next
+        #     head = head.next
         
-        return answer.next
+        # return answer.next
