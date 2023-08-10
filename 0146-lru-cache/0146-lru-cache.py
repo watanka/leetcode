@@ -40,12 +40,13 @@ class LRUCache:
         return -1
         
     def put(self, key: int, value: int) -> None:
+        # if key is already in the dictionary
         if key in self.dic :
             curr = self.dic[key]
             del self.dic[key]
             self.deleteNode(curr)
 
-        if len(self.dic) == self.capacity :
+        elif len(self.dic) == self.capacity :
             del self.dic[self.tail.prev.key]
             self.deleteNode(self.tail.prev)
         
