@@ -9,21 +9,36 @@ from collections import deque
 
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        if not root :
-            return 0
-        queue = deque([root])
-        depth = 0
+        # 3rd approach. dfs
+        stack = [[root, 1]]
+        res = 0
 
-        while queue :
-            for _ in range(len(queue)) :
-                node = queue.popleft()
+        while stack :
+            node, depth = stack.pop()
+        
+            if node :
+                res = max(depth, res)
+                stack.append([node.left, depth + 1])
+                stack.append([node.right, depth + 1])
+
+        return res
+
+        # 2nd approach. bfs
+        # if not root :
+        #     return 0
+        # queue = deque([root])
+        # depth = 0
+
+        # while queue :
+        #     for _ in range(len(queue)) :
+        #         node = queue.popleft()
                 
-                if node.left :
-                    queue.append(node.left)
-                if node.right :
-                    queue.append(node.right)
-            depth += 1
-        return depth
+        #         if node.left :
+        #             queue.append(node.left)
+        #         if node.right :
+        #             queue.append(node.right)
+        #     depth += 1
+        # return depth
             
 
 
