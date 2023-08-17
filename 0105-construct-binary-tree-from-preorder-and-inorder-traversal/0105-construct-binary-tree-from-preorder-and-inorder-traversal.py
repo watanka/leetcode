@@ -7,22 +7,28 @@
 from collections import deque
 
 class Solution:
+    def __init__(self) :
+        self.preorder_index = 0
+        self.preorder = None
 
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
 
         hashmap = {num : i for i, num in enumerate(inorder)}
+        self.preorder = preorder
 
-        def _buildTree(preorder, inorder) :
-            if not preorder or not inorder :
-                return None
-            
-            root = TreeNode(preorder[0])
-            mid = hashmap[preorder[0]]
-            root.left = self.buildTree(preorder[1:mid + 1], inorder[:mid])
-            root.right = self.buildTree(preorder[mid + 1:], inorder[mid+1:])
+        def _buildTree(left, right) :
+            if left > right :
+                return
+
+            rootval = self.preorder[self.preorder_index]
+            root = TreeNode(rootval)
+
+            self.preorder_index += 1        
+
+            next_right = hashmap[rootval]
+            root.left = _buildTree(left, next_right - 1)
+            root.right = _buildTree(next_right + 1, right)
 
             return root
         
-        return _buildTree(preorder, inorder)
-
-
+        return _buildTree(0, len(inorder) - 1)
