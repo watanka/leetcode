@@ -16,14 +16,12 @@ class Solution:
         while queue :
             
             len_q = len(queue) # initial length of queue is same as # of nodes in same level. connect # nodes-1 that are on same level
-            i = 1
-            for _ in range(len_q) :
+            for i in range(len_q) :
                 
                 node = queue.popleft()
-                
                 if node :
                     # print(queue[0].val if queue else None)
-                    node.next = queue[0] if i < len_q else None
+                    node.next = queue[0] if i < len_q - 1 else None # connect #(samelevel node) - 1
                     i += 1
                     if node.left :
                         queue.append(node.left)
