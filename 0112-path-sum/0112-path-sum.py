@@ -6,19 +6,17 @@
 #         self.right = right
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
-
-        if not root :
-            return False
-
         found = False
+        
         def dfs(stack, sumval) :
             nonlocal found
-            if found :
+            if found or stack[0] is None:
                 return
             
             while stack :
                 popNode = stack.pop()
                 sumval += popNode.val
+
                 if popNode.left :
                     leftstack = stack + [popNode.left]
                     dfs(leftstack, sumval)
@@ -26,8 +24,8 @@ class Solution:
                     rightstack = stack + [popNode.right]
                     dfs(rightstack, sumval )
                 if not popNode.left and not popNode.right :
-                    if sumval == targetSum :
-                        found = True
+                    found = (sumval == targetSum)
+                        
                 
         dfs(stack = [root], sumval = 0)
 
