@@ -10,16 +10,19 @@ class Solution:
             nonlocal result
             while stack :
                 node = stack.pop()
-                
+                root_leaf_path.append(node.val)
+
                 if not node.left and not node.right :
-                    root_leaf_sum = int(''.join(map(str,root_leaf_path + [node.val])))
+                    root_leaf_sum = int(''.join(map(str, root_leaf_path)))
                     result += root_leaf_sum
                     return
 
                 if node.left :
-                    dfs(stack + [node.left], root_leaf_path + [node.val])
+                    dfs(stack + [node.left], root_leaf_path)
+                    root_leaf_path.pop()
                 if node.right :
-                    dfs(stack + [node.right], root_leaf_path + [node.val])
+                    dfs(stack + [node.right], root_leaf_path)
+                    root_leaf_path.pop()
                 
                 
         
