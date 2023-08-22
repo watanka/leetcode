@@ -12,14 +12,16 @@ class Solution:
             nonlocal result
             if not node :
                 return
+            r_to_l_sum = r_to_l_sum * 10 + node.val
             if not node.left and not node.right :
                 # convert root to left path into a number
-                root2left_sum = int(''.join(map(str, r_to_l_sum + [node.val])))
-                result += root2left_sum
-            helper(node.left, r_to_l_sum + [node.val])
-            helper(node.right, r_to_l_sum + [node.val])
+                print(r_to_l_sum)
+                result += r_to_l_sum
+                return
+            helper(node.left, r_to_l_sum)
+            helper(node.right, r_to_l_sum)
 
-        helper(root, [])
+        helper(root, 0)
         return result
 
         ## 1st. approach dfs
