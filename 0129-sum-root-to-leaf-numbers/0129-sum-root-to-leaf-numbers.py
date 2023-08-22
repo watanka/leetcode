@@ -15,7 +15,6 @@ class Solution:
             r_to_l_sum = r_to_l_sum * 10 + node.val
             if not node.left and not node.right :
                 # convert root to left path into a number
-                print(r_to_l_sum)
                 result += r_to_l_sum
                 return
             helper(node.left, r_to_l_sum)
