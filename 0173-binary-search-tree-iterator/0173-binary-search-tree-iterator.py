@@ -10,7 +10,6 @@ class BSTIterator:
         self.arr = []
         self.inorder(root)
         self.idx = -1
-        print(self.arr)
 
     def next(self) -> int:
         self.idx += 1
