@@ -8,21 +8,26 @@ from collections import deque
 
 class Solution:
     def countNodes(self, root: Optional[TreeNode]) -> int:
-        ## 2nd. dfs
-        cnt = 0
-        def dfs(stack) :
-            nonlocal cnt 
-            while stack :
-                node = stack.pop()
-                if node :
-                    cnt += 1
-                    if node.left :
-                        stack.append(node.left)
-                    if node.right :
-                        stack.append(node.right)
-        dfs(stack = [root])
+        if not root :
+            return 0
+        return self.countNodes(root.left) + self.countNodes(root.right) + 1
+
         
-        return cnt
+        ## 2nd. dfs
+        # cnt = 0
+        # def dfs(stack) :
+        #     nonlocal cnt 
+        #     while stack :
+        #         node = stack.pop()
+        #         if node :
+        #             cnt += 1
+        #             if node.left :
+        #                 stack.append(node.left)
+        #             if node.right :
+        #                 stack.append(node.right)
+        # dfs(stack = [root])
+
+        # return cnt
 
 
         ## 1st. bfs
