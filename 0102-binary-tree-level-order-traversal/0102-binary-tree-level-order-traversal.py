@@ -17,12 +17,11 @@ class Solution:
             subanswer = []
             for _ in range(qlen) :
                 node = queue.popleft()
-                if node :
-                    subanswer.append(node.val)
-                    if node.left :
-                        queue.append(node.left)
-                    if node.right :
-                        queue.append(node.right)
+                subanswer.append(node.val)
+                if node.left :
+                    queue.append(node.left)
+                if node.right :
+                    queue.append(node.right)
             answer.append(subanswer)
 
         return answer
