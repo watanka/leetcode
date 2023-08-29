@@ -10,26 +10,45 @@ import sys
 class Solution:
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
 
-        sortList = []
-        minDiff = 10**5
-        lastval = None
+        self.minDistance = 1e9
+        # Initially, it will be null.
+        self.prevNode = None
 
-        def sortTree(root) :
-            if not root :
+        def inorder(node):
+            if node is None:
                 return
+            inorder(node.left)
+            # Find the difference with the previous value if it is there.
+            if self.prevNode is not None:
+                self.minDistance = min(self.minDistance, node.val - self.prevNode)
+            self.prevNode = node.val
+            inorder(node.right)
 
-            sortTree(root.left)
-            sortList.append(root)
-            sortTree(root.right)
+        inorder(root)
+        return self.minDistance
 
-        sortTree(root)
-        for idx in range(len(sortList) - 1) :
-            prev, nex = sortList[idx], sortList[idx+1]
+
+        # # 1st approach. get ordered list and compare neighbors
+        # sortList = []
+        # minDiff = 10**5
+        # lastval = None
+
+        # def sortTree(root) :
+        #     if not root :
+        #         return
+
+        #     sortTree(root.left)
+        #     sortList.append(root)
+        #     sortTree(root.right)
+
+        # sortTree(root)
+        # for idx in range(len(sortList) - 1) :
+        #     prev, nex = sortList[idx], sortList[idx+1]
             
-            if prev and nex :
-                minDiff = min(minDiff, abs( prev.val - nex.val ))
+        #     if prev and nex :
+        #         minDiff = min(minDiff, abs( prev.val - nex.val ))
 
-        return minDiff
+        # return minDiff
 
     
 
