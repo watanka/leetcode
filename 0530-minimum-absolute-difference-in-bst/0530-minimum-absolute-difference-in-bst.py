@@ -12,6 +12,7 @@ class Solution:
 
         sortList = []
         minDiff = 10**5
+        lastval = None
 
         def sortTree(root) :
             if not root :
