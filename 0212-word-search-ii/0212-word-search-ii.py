@@ -1,43 +1,41 @@
-class TrieNode :
-    def __init__(self) :
-        self.children = {}
-        self.eow = False
-
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
-        def dfs(x, y, root) :
-            letter = board[x][y]
-            cur = root[letter]
-
-            word = cur.pop('#', False)
-            if word :
-                res.append(word)
-            board[x][y] = '*'
-
-            for dirx, diry in [(0,1),(0,-1), (1,0), (-1, 0)] :
-                curx, cury = x + dirx, y + diry
-
-                if 0 <= curx < m and 0 <= cury < n and board[curx][cury] in cur :
-                    dfs(curx, cury, cur)
-
-            board[x][y] = letter
-
-            if not cur :
-                root.pop(letter)
+        
+        m, n = len(board), len(board[0])
 
         trie = {}
         for word in words :
             cur = trie
-            for c in word :
-                cur = cur.setdefault(c, {})
+            for letter in word :
+                cur = cur.setdefault(letter, {})
             cur['#'] = word
 
-        m, n = len(board), len(board[0])
-        res = []
+        def dfs(y, x, node) :
+            letter = board[y][x]
+            cur = node[letter]
 
-        for i in range(m) :
-            for j in range(n) :
-                if board[i][j] in trie :
-                    dfs(i, j, trie)
+            word = cur.pop('#', False)
+            if word :
+                result.append(word)
+    
 
-        return res
+            board[y][x] = '*'
+
+            for (dy, dx) in [(0, 1), (0, -1), (1, 0), (-1, 0)] :
+                ny, nx = y + dy, x + dx
+                if 0 <= ny < m and 0 <= nx < n and board[ny][nx] in cur :
+                    dfs(ny, nx, cur)
+                
+            board[y][x] = letter
+
+            if not cur :
+                node.pop(letter)
+
+
+        result = []
+        for y in range(m) :
+            for x in range(n) :
+                if board[y][x] in trie :
+                    dfs(y, x, trie)
+
+        return result
