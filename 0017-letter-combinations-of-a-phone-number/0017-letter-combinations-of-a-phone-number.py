@@ -14,19 +14,14 @@ class Solution:
                       '9' : 'wxyz'
                     }
 
-        combinations = []
-        for digit in digits :
-          combinations.append(phone_dict[digit])
-
-        
         result = []
+
         def dfs(stack) :
-          if len(stack) == len(digits) :
-            
+          if len(stack) == len(digits) :    
             result.append(''.join(stack))
             return
 
-          for letter in combinations[len(stack)] :
+          for letter in phone_dict[digits[len(stack)]] :
             stack.append(letter)
             dfs(stack)
             stack.pop()
