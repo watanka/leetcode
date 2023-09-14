@@ -7,7 +7,7 @@ class Solution:
                 result.append(combinations)
                 return
             
-            if len(combinations) + (n - remaining_num) < k - 1 :
+            if len_comb + (n - remaining_num) < k - 1 :
                 return
 
             
