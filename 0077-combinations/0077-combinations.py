@@ -1,23 +1,21 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-
-    
-        def backtracking(combinations, len_comb, remaining_num) :
-            if len_comb == k :
-                result.append(combinations)
+        def backtracking(curr, first) :
+            if len(curr) == k :
+                result.append(curr[:])
                 return
             
-            if len_comb + (n - remaining_num) < k - 1 :
-                return
+            need = k - len(curr)
+            remain = n - first + 1
+            available = remain - need
 
-            
-            for j in range(remaining_num, n+ 1) :
-                backtracking(combinations + [j], len_comb + 1, j + 1)
+            for num in range(first, first + available + 1) :
+                curr.append(num)
+                backtracking(curr, num + 1)
+                curr.pop()
             return
-
+            
         result = []
-        backtracking([], 0,1)
+        backtracking([], 1)
 
         return result
-
-        
