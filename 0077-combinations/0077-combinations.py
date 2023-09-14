@@ -2,8 +2,8 @@ class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
 
     
-        def backtracking(combinations, remaining_num) :
-            if len(combinations) == k :
+        def backtracking(combinations, len_comb, remaining_num) :
+            if len_comb == k :
                 result.append(combinations)
                 return
             
@@ -12,10 +12,10 @@ class Solution:
 
             
             for j in range(remaining_num, n+ 1) :
-                backtracking(combinations[::] + [j], j + 1)
+                backtracking(combinations + [j], len_comb + 1, j + 1)
 
         result = []
-        backtracking([],1)
+        backtracking([], 0,1)
 
         return result
 
