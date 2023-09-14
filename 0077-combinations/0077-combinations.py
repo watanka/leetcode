@@ -13,6 +13,7 @@ class Solution:
             
             for j in range(remaining_num, n+ 1) :
                 backtracking(combinations + [j], len_comb + 1, j + 1)
+            return
 
         result = []
         backtracking([], 0,1)
