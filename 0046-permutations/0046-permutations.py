@@ -11,11 +11,9 @@ class Solution:
 
             for i in range(numLength) :
                 if not visited[i] :
-                    perm.append(nums[i]) 
                     visited[i] = 1
-                    backtracking(perm, i + 1)
+                    backtracking(perm + [nums[i]], i + 1)
                     visited[i] = 0
-                    perm.pop()
 
         backtracking([], 0)
         
