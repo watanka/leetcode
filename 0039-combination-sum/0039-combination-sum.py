@@ -1,22 +1,20 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        
-        def backtracking(val, comb) :
+        totalLength = len(candidates)
+
+        def backtracking(val, comb, i) :
             if val < 0 :
                 return
             if val == 0 :
-                strKey = ''.join(map(str,sorted(comb)))
-
-                if strKey not in result_dict :
-                    result.append(comb)
-                    result_dict[strKey] = 1
+                result.append(comb)
                 return
             
-            for cand in candidates :
-                backtracking(val - cand, comb + [cand])
-        result_dict = {}
+            for idx in range(i, totalLength) :
+                backtracking(val - candidates[idx], comb + [candidates[idx]], idx)
+
+        
         result = []
-        backtracking(target, [])
+        backtracking(target, [], 0)
         
         return result
                 
