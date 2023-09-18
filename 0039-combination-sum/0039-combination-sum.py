@@ -18,3 +18,12 @@ class Solution:
         
         return result
                 
+
+        # dp = [[] for _ in range(target+1)]
+        # for c in candidates:
+        #     if c <= target:
+        #         dp[c].append([c])
+        #     for i in range(c+1, target+1):
+        #         for comb in dp[i-c]:
+        #             dp[i].append(comb + [c])
+        # return dp[-1]
