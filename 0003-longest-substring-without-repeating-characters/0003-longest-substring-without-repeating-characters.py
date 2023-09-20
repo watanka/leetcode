@@ -8,9 +8,9 @@ class Solution:
         for r in range(len(s)) :
             if s[r] not in charmap or charmap[s[r]] < l :
                 charmap[s[r]] = r
-                maxLength = max(maxLength, r - l + 1)
+                
             else :
                 l = charmap[s[r]] + 1
                 charmap[s[r]] = r
-
+            maxLength = max(maxLength, r - l + 1)
         return maxLength
