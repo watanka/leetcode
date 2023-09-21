@@ -17,23 +17,21 @@ class Solution:
             else :
                 break
         length = len(num_ls)
-        print(length)
+ 
         for idx in range(length // 2) :
             # 양쪽 끝에서부터 빼기
-            print('---')
-            print(idx)
+
             leftval = x // (10 ** (length - 1 - idx))
             rightval = (x % (10 ** (idx+1))) // (10 ** idx)
-            print(leftval)
-            print(rightval )
+
         
             if leftval != rightval :
                 return False
             
             x -= leftval * (10 ** (length - 1- idx))
-            print('after minus leftval', x)
+
             x -= rightval * (10 ** idx)
-            print('after minus rightval', x)
+
         
         return True
         
