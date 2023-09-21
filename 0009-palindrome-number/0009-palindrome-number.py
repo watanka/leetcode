@@ -2,36 +2,12 @@ class Solution:
     def isPalindrome(self, x: int) -> bool:
         if x < 0 :
             return False
-        x = abs(x)
-        val = x
 
-        length = 1
-        num_ls = []
-        while True :
-            remainder = val % 10
-            num_ls.append(remainder)
-            val //= 10
-            
-            if val > 0 :
-                length += 1
-            else :
-                break
-        length = len(num_ls)
- 
-        for idx in range(length // 2) :
-            # 양쪽 끝에서부터 빼기
+        originalnum = x
+        revnum = 0
 
-            leftval = x // (10 ** (length - 1 - idx))
-            rightval = (x % (10 ** (idx+1))) // (10 ** idx)
+        while x > 0 :
+            revnum = revnum * 10 + x % 10
+            x //= 10
 
-        
-            if leftval != rightval :
-                return False
-            
-            x -= leftval * (10 ** (length - 1- idx))
-
-            x -= rightval * (10 ** idx)
-
-        
-        return True
-        
+        return originalnum == revnum
