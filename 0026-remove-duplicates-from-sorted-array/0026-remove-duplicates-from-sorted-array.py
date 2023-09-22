@@ -3,12 +3,10 @@ class Solution:
     
         k = 1
         i = 1
-        lastSeen = nums[0]
-        
         while i < len(nums) :
-            if nums[i] != lastSeen :
+            if nums[i] != nums[i-1] :
                 nums[k] = nums[i]
-                lastSeen = nums[i]
+                
                 k += 1
 
             i += 1
@@ -20,3 +18,14 @@ class Solution:
 
         return k
             
+
+    
+        # count = 1
+        # for i in range(1, len(nums)):
+        #   if nums[i] != nums[i-1]:
+        #     nums[count] = nums[i]
+        #     count += 1
+        # arr = [int(x) for x in set(nums)]
+        # print(len(arr))
+        # print(count)
+        return len(arr)
