@@ -9,10 +9,10 @@ class Solution:
                 notValIdx += 1
             idx += 1
 
-        k = notValIdx
-        while k < len(nums) :
-            nums[k] = '-'
-            k += 1
+        # k = notValIdx
+        # while k < len(nums) :
+        #     nums[k] = '-'
+        #     k += 1
             
 
         return notValIdx
