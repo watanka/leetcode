@@ -11,10 +11,10 @@ class Solution:
 
             i += 1
         
-        change_idx = k 
-        while change_idx < len(nums) :
-            nums[change_idx] = '_'
-            change_idx += 1
+        # change_idx = k 
+        # while change_idx < len(nums) :
+        #     nums[change_idx] = '_'
+        #     change_idx += 1
 
         return k
             
