@@ -17,17 +17,18 @@ class Solution:
 
 
         substr = ''
-        word_list = []
+        lastWordLength = 0
+        
         for letter in s :
             if letter != ' ' :
                 substr += letter
             elif substr != '' and letter == ' ' : #
-                word_list.append(substr)
+                lastWordLength = len(substr)
                 substr = ''
         # append remaining substr
         if substr :
-            word_list.append(substr)
+            lastWordLength = len(substr)
 
         # list의 마지막 원소 => word return
-        return len(word_list[-1])
+        return lastWordLength
 
