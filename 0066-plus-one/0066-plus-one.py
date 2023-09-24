@@ -9,16 +9,21 @@ class Solution:
 
         # [9, 9, 9] => expected [1, 0, 0, 0] 
         # 
-
-        
-        square = 0
-        integer = 0
+        up = 0
+        result = [0 for _ in range(len(digits))]
         for i in range(len(digits) - 1, -1, -1) :
-            integer += digits[i] * (10 ** square)
-            square += 1
+            if i == len(digits) - 1 :
+                num = digits[i] + 1
+            else :
+                num = digits[i]
+            if up :
+                num += up
+            new_num, up = num % 10, num // 10
+            result[i] = new_num
+        if up :
+            result = [up] + result
 
-        integer += 1
+        return result
 
-        return list(map(int, str(integer)))
 
 
