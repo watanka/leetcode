@@ -36,7 +36,6 @@ class Solution:
         up = '0'
         for idx in range(length - 1, -1, -1 ) :
             val, up = binsum(int(a[idx]), int(b[idx]), int(up))
-            print(val, up)
             result = val + result
         if up == '1' : 
             result = up + result
