@@ -4,9 +4,9 @@ class Solution:
 
         def backtracking(n_open, n_close, comb) : 
             if n_open == n_close == n :
-                if comb not in result :
-                    result.append(comb)
-                    return
+               
+                result.append(comb)
+                return
 
 
             for pthsis in [0, 1] : # put write ( or ).[open, close]
