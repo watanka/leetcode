@@ -14,10 +14,9 @@ class Solution:
         n = 10, 10! = 3628800 2
         how many 10 in the value => there are enough of 2 compared to 5. => how many 5s?
         '''
-        x = 5
         zeros = 0
 
-        while x <= n :
-            zeros += n // x
-            x *= 5
+        while n > 0 :
+            n //= 5
+            zeros += n
         return zeros
